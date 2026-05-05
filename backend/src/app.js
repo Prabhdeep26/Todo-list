@@ -12,7 +12,6 @@ app.use(cors());
 app.post("/todo/create", async (req, res) => {
 	try {
 		const task = await Todo.create(req.body);
-		await task.save();
 		res.json("data added successfully");
 	} catch (err) {
 		res.status(400).json("Failed to create task " + err.message);
