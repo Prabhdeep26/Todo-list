@@ -71,3 +71,5 @@ connectDB()
 	.catch((err) => {
 		console.error("Error connecting Database");
 	});
+
+module.exports = app;
