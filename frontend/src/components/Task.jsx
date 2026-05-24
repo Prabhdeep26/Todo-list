@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const Task = ({ task, dueDate, status, _id, fetchTodos, onEdit }) => {
 	const handleDelete = async () => {
 		try {
-			await fetch("http://localhost:3000/todo", {
+			await fetch("https://todo-list-backend-navy.vercel.app/todo", {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",
@@ -21,7 +21,7 @@ const Task = ({ task, dueDate, status, _id, fetchTodos, onEdit }) => {
 
 	const handleStatus = async () => {
 		try {
-			await fetch("http://localhost:3000/todo/status", {
+			await fetch("https://todo-list-backend-navy.vercel.app/todo/status", {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",

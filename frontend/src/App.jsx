@@ -19,9 +19,12 @@ const App = () => {
 
 	const fetchTodos = async () => {
 		try {
-			const response = await fetch("http://localhost:3000/todo", {
-				method: "GET",
-			});
+			const response = await fetch(
+				"https://todo-list-backend-navy.vercel.app/todo",
+				{
+					method: "GET",
+				},
+			);
 			const data = await response.json();
 			setTodos(data);
 		} catch (err) {
@@ -38,16 +41,19 @@ const App = () => {
 		}
 
 		try {
-			await fetch("http://localhost:3000/todo/create", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
+			await fetch(
+				"https://todo-list-backend-navy.vercel.app/todo/create",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						task: taskRef.current.value,
+						dueDate: selectedDate,
+					}),
 				},
-				body: JSON.stringify({
-					task: taskRef.current.value,
-					dueDate: selectedDate,
-				}),
-			});
+			);
 			toast.success("Task added successfully!");
 			fetchTodos();
 		} catch (err) {
@@ -60,13 +66,16 @@ const App = () => {
 
 	const updateTask = async (data) => {
 		try {
-			await fetch("http://localhost:3000/todo/update", {
-				method: "PATCH",
-				headers: {
-					"Content-Type": "application/json",
+			await fetch(
+				"https://todo-list-backend-navy.vercel.app/todo/update",
+				{
+					method: "PATCH",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
 				},
-				body: JSON.stringify(data),
-			});
+			);
 			toast.success("Task Updated successfully");
 			fetchTodos();
 		} catch (err) {
